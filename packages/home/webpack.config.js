@@ -25,12 +25,13 @@ module.exports = {
 
   devServer: {
     static: outputPath,
+    historyApiFallback: true,
   },
 
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts[x]?$/,
         loader: require.resolve('babel-loader'),
         options: {
           presets: [require.resolve('@babel/preset-typescript')],
