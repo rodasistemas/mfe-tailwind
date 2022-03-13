@@ -1,6 +1,6 @@
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
-const path = require('path')
-const outputPath = path.resolve(__dirname, 'dist')
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const path = require('path');
+const outputPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: './src/index',
@@ -32,7 +32,12 @@ module.exports = {
         loader: require.resolve('babel-loader'),
         options: {
           presets: [
-            require.resolve('@babel/preset-react'),
+            [
+              require.resolve('@babel/preset-react'),
+              {
+                runtime: 'automatic',
+              },
+            ],
             require.resolve('@babel/preset-typescript'),
           ],
         },
@@ -40,14 +45,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               importLoaders: 1,
             },
           },
-          "postcss-loader",
+          'postcss-loader',
         ],
       },
     ],
@@ -63,7 +68,19 @@ module.exports = {
         './Header': './src/Header',
         './Footer': './src/Footer',
       },
-      shared: ['react', 'react-dom', 'single-spa-react'],
+      shared: {
+        react: {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: '17.0.2',
+        },
+        'react-dom': { singleton: true },
+        'single-spa-react': { singleton: true },
+        tailwindcss: { singleton: true },
+        'postcss-loader': { singleton: true },
+        postcss: { singleton: true },
+        autoprefixer: { singleton: true },
+      },
     }),
   ],
-}
+};

@@ -59,7 +59,19 @@ module.exports = {
         'home-body':'body',
       },
       exposes: {},
-      shared: [],
+        shared: {
+        react: {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: '17.0.2',
+        },
+        'react-dom': { singleton: true },
+        'single-spa-react': { singleton: true },
+        tailwindcss: { singleton: true },
+        'postcss-loader': { singleton: true },
+        postcss: { singleton: true },
+        autoprefixer: { singleton: true },
+      }
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

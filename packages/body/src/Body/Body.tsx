@@ -1,23 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import singleSpaReact from 'single-spa-react'
-import './index.css'
 import { LoremIpsum } from "lorem-ipsum";
+import '../index.css'
 
 const Body: React.VFC = () => {
-  const lorem = new LoremIpsum({
-    sentencesPerParagraph: {
-      max: 8,
-      min: 4
-    },
-    wordsPerSentence: {
-      max: 16,
-      min: 4
-    }
-  });
+  const lorem = new LoremIpsum();
   return (
 
-    <div className="bg-slate-700 dark:bg-black h-full pl-12 pr-12 text-white pt-28 pb-24">
+    <div className="bg-slate-700 dark:bg-black h-full pl-12 pr-12 pt-28 pb-24 text-white ">
       <h1 className="text-3xl text-sky-400 mb-10 border-b-2 border-sky-400">
         Body from React
       </h1>
@@ -43,13 +31,4 @@ const Body: React.VFC = () => {
   )
 }
 
-const lifecycles = singleSpaReact({
-  React,
-  ReactDOM,
-  // rootComponent: Body,
-  loadRootComponent:(props) => Promise.resolve().then(() =>  Body),
-})
-
-export const bootstrap = lifecycles.bootstrap
-export const mount = lifecycles.mount
-export const unmount = lifecycles.unmount
+export default  Body;
