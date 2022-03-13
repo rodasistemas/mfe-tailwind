@@ -46,7 +46,8 @@ const Body: React.VFC = () => {
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: Body,
+  // rootComponent: Body,
+  loadRootComponent:(props) => Promise.resolve().then(() =>  Body),
 })
 
 export const bootstrap = lifecycles.bootstrap
