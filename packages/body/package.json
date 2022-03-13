@@ -1,0 +1,32 @@
+{
+    "name": "body",
+    "scripts": {
+        "start": "webpack serve --port 3002",
+        "dev": "webpack-dev-server --port=3002",
+        "build": "webpack --mode=production"
+    },
+    "version": "1.0.0",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "^7.8.6",
+        "@babel/preset-react": "^7.12.10",
+        "@babel/preset-typescript": "^7.12.7",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "autoprefixer": "^10.4.2",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.2.6",
+        "html-webpack-plugin": "^5.3.1",
+        "postcss": "^8.4.8",
+        "postcss-loader": "^6.2.1",
+        "single-spa-react": "^3.2.0",
+        "style-loader": "^2.0.0",
+        "tailwindcss": "^3.0.23",
+        "webpack": "^5.70.0"
+    },
+    "dependencies": {
+        "lorem-ipsum": "^2.0.4",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    }
+}
