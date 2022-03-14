@@ -3,7 +3,7 @@ const path = require('path');
 const outputPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
-  entry: './src/index',
+  entry: './src/index.ts',
   cache: false,
 
   mode: 'development',
@@ -67,21 +67,21 @@ module.exports = {
       exposes: {
         './Header': './src/Header',
         './Footer': './src/Footer',
-        './Navigator': './src/Nav',
+        './Navigator': './src/Nav'
       },
       shared: {
         react: {
           singleton: true,
           strictVersion: true,
-          requiredVersion: '17.0.2',
+          requiredVersion: '17.0.2'
         },
         'react-dom': { singleton: true },
         'single-spa-react': { singleton: true },
         tailwindcss: { singleton: true },
         'postcss-loader': { singleton: true },
         postcss: { singleton: true },
-        autoprefixer: { singleton: true },
-      },
-    }),
-  ],
-};
+        autoprefixer: { singleton: true }
+      }
+    })
+  ]
+}
