@@ -1,8 +1,6 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 const path = require('path')
 const outputPath = path.resolve(__dirname, 'dist')
-const stylesHandler = 'style-loader'
 
 module.exports = {
   entry: './src/index',
@@ -16,7 +14,7 @@ module.exports = {
   },
 
   output: {
-    publicPath: 'http://localhost:3000/',
+    publicPath: 'http://localhost:3003/',
   },
 
   resolve: {
@@ -25,7 +23,6 @@ module.exports = {
 
   devServer: {
     static: outputPath,
-    historyApiFallback: true,
   },
 
   module: {
@@ -34,33 +31,40 @@ module.exports = {
         test: /\.ts[x]?$/,
         loader: require.resolve('babel-loader'),
         options: {
-          presets: [require.resolve('@babel/preset-typescript')],
+          presets: [
+            [require.resolve('@babel/preset-react'),{
+              runtime: "automatic",
+            }],
+            require.resolve('@babel/preset-typescript'),
+          ],
         },
-        
       },
       {
-        test: /\.css$/i,
-        use: [stylesHandler, 'css-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+            },
+          },
+          "postcss-loader",
+        ],
       },
     ],
   },
 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'home',
-      library: { type: 'var', name: 'home' },
+      name: 'about',
+      library: { type: 'var', name: 'about' },
       filename: 'remoteEntry.js',
-      remotes: {
-        'home-nav': 'nav',
-        'home-body':'body',
-        'home-about':'about',
+      remotes: {},
+      exposes: {
+        './About': './src/About',
       },
-      exposes: {},
-        shared: {
+      shared: {
         react: {
           singleton: true,
           strictVersion: true,
@@ -68,14 +72,11 @@ module.exports = {
         },
         'react-dom': { singleton: true },
         'single-spa-react': { singleton: true },
-        tailwindcss: { singleton: true },
-        'postcss-loader': { singleton: true },
-        postcss: { singleton: true },
-        autoprefixer: { singleton: true },
-      }
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
+        'tailwindcss': { singleton: true },
+        'postcss-loader': { singleton: true},
+        'postcss': { singleton: true },
+        'autoprefixer': { singleton: true}
+      },
     }),
   ],
 }

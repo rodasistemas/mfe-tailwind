@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import singleSpaReact from 'single-spa-react'
-import Header from './Header'
+import Nav from './Nav'
 import '../index.css'
 
 const lifecycles = singleSpaReact({
     React,
     ReactDOM,
-    rootComponent: Header,
+    rootComponent: Nav,
     errorBoundary: (err, props, other) => {
       console.log({err, props, other})
     }

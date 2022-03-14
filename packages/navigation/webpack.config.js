@@ -67,6 +67,7 @@ module.exports = {
       exposes: {
         './Header': './src/Header',
         './Footer': './src/Footer',
+        './Navigator': './src/Nav',
       },
       shared: {
         react: {

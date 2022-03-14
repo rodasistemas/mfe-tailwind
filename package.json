@@ -24,6 +24,7 @@
     "wsrun": "^5.2.4"
   },
   "dependencies": {
+    "about": "1.0.0",
     "body": "1.0.0",
     "home": "1.0.0",
     "navigation": "1.0.0"

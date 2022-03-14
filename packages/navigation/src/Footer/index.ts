@@ -7,6 +7,9 @@ const lifecycles = singleSpaReact({
     React,
     ReactDOM,
     rootComponent: Footer,
+    errorBoundary: (err, props, other) => {
+      console.log({err, props, other})
+    }
   })
   
   export const bootstrap = lifecycles.bootstrap
