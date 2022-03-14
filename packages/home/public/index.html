@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" theme="dark">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +11,19 @@
       href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700|Roboto:400,700&display=swap"
       />
 
-    <script defer src="http://localhost:3001/remoteEntry.js"></script>
-    <script defer src="http://localhost:3002/remoteEntry.js"></script>
-    <script defer src="http://localhost:3003/remoteEntry.js"></script>
-    
+    <script src="http://localhost:3001/remoteEntry.js"></script>
+    <script src="http://localhost:3002/remoteEntry.js"></script>
+    <script src="http://localhost:3003/remoteEntry.js"></script>
+
   </head>
 
   <body>
-
-    <div id="single-spa-application:header" class="header"></div>
-    <div id="single-spa-application:navigator" class="navigation"></div>
+    <div class="header">
+      <div id="single-spa-application:header" class="app-header"></div>
+      <div class="navbar">
+        <div id="single-spa-application:navigator" class="app-navbar"></div>
+      </div>
+    </div>
     <main class="main">
       <div class="lds-ripple"><div></div><div></div></div>
 

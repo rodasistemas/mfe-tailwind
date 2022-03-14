@@ -10,11 +10,11 @@ const About: React.VFC = () => {
         About from React
       </h1>
       <div className="space-12 break-word font-size-12 ">
-        <p className="pb-5">
+        <p className="pb-5 line-h-4">
           {lorem.generateParagraphs(5)}
         </p>
         <p className="p-8 text-center border-2 m-2">
-          {lorem.generateSentences(10)}
+          {lorem.generateSentences(5)}
         </p>
         <p className="pt-5 italic normal">
           {lorem.generateWords(36)}
