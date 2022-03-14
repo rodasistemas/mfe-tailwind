@@ -5,7 +5,7 @@ const About: React.VFC = () => {
   const lorem = new LoremIpsum();
   return (
 
-    <div className="bg-slate-700 dark:bg-black h-full p-12 text-white ">
+    <div className="h-full p-12 ">
       <h1 className="text-3xl text-sky-400 mb-10 border-b-2 border-sky-400">
         About from React
       </h1>

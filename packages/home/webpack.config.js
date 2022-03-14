@@ -1,8 +1,8 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
-const path = require('path')
-const outputPath = path.resolve(__dirname, 'dist')
-const stylesHandler = 'style-loader'
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const path = require('path');
+const outputPath = path.resolve(__dirname, 'dist');
+const stylesHandler = 'style-loader';
 
 module.exports = {
   entry: './src/index',
@@ -36,7 +36,6 @@ module.exports = {
         options: {
           presets: [require.resolve('@babel/preset-typescript')],
         },
-        
       },
       {
         test: /\.css$/i,
@@ -56,11 +55,11 @@ module.exports = {
       filename: 'remoteEntry.js',
       remotes: {
         'home-nav': 'navigation',
-        'home-body':'body',
-        'home-about':'about',
+        'home-body': 'body',
+        'home-about': 'about',
       },
       exposes: {},
-        shared: {
+      shared: {
         react: {
           singleton: true,
           strictVersion: true,
@@ -72,10 +71,10 @@ module.exports = {
         'postcss-loader': { singleton: true },
         postcss: { singleton: true },
         autoprefixer: { singleton: true },
-      }
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
   ],
-}
+};
